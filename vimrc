@@ -4,6 +4,7 @@
 set number                             " use line numbers
 filetype plugin indent on              " use per-filetype settings
 syntax on                              " enable syntax highlighting
+colorscheme lunaperche                 " built-in colorscheme
 set tabstop=4                          " tabs display as 4 spaces
 set shiftwidth=4                       " number of spaces to use for indent
 set expandtab                          " use spaces instead of tabs
@@ -17,16 +18,18 @@ set splitbelow                         " horizontal splits open below
 set scrolloff=1                        " always leave 1 line below the cursor
 set sidescrolloff=5                    " always leave 5 chrs right of cursor
 set hidden                             " open more than 1 buffer simultaneously
-set nomodeline                         " don't read arbitrary config from 
+set nomodeline                         " don't read arbitrary config from buffers
 set smartcase                          " case-aware autocomplete
-set notimeout                          " don't timeout waiting for a chord
 set incsearch                          " show match while searching/substituting
 set hlsearch                           " show all results of a search
 set autoread                           " detect when a file is modified
+set nostartofline                      " maintain cursor position for move cmds
+set showcmd                            " show partial chords as you enter them
 set path=$PWD/**                       " path to search for :find
 match ErrorMsg '\%>80v.\+'             " highlight lines longer than 80 chrs
-set ttimeout                           " add a timeout for key codes
-set ttimeoutlen=0                      " do not wait for key codes for a chord
+set notimeout                          " don't timeout waiting for a chord
+set ttimeout                           " configure a timeout for key codes
+set ttimeoutlen=0                      " do not wait after input for a chord
                                        " this removes the delay after <esc>
 
 " create swap directory if it doesn't exists
@@ -50,8 +53,9 @@ nnoremap <leader>n :noh<cr>
 " toggle spellchecking
 nnoremap <space>s :setlocal spell! spelllang=en_us<cr>
 " move between buffers
-nnoremap <space>N :bp<cr>
-nnoremap <space>n :bn<cr>
+nnoremap ]b :bn<cr>
+nnoremap [b :bp<cr>
+" make a little menu to switch buffers
 map <space>b :ls<cr>:b<Space>
 " move between splits
 nnoremap <space>h <C-w>h
@@ -96,13 +100,14 @@ set statusline+=\                      " end padding
 " editorconfig-vim (https://github.com/editorconfig/editorconfig-vim):
 "   read indent/format info from .editorconfig
 " indentLine (https://github.com/Yggdroot/indentLine):
-"   add visual indent lines.  this doesn't work with macos vim :(
+"   add visual indent lines.  this doesn't work with default macos vim
 " vim-sneak (https://github.com/justinmk/vim-sneak):
 "   this adds the s key as a more useful motion
-let g:sneak#label=1  " add labels when there's multiple results
 " NERDTree (https://github.com/preservim/nerdtree):
 "   a user-friendly file tree
-map <leader>e :NERDTreeToggle<cr>
 " vim-commentary (https://github.com/tpope/vim-commentary):
 "   a mechanism to comment stuff out
+
+let g:sneak#label=1  " add labels when there's multiple results
+map <leader>e :NERDTreeToggle<cr>
 map <leader>c :Commentary<cr>

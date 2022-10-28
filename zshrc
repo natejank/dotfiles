@@ -80,7 +80,7 @@ fi
 
 case `uname -s` in
 	'Darwin')
-		export JAVA_HOME=`/usr/libexec/java_home`
+		export JAVA_HOME="$HOME/.asdf/installs/java/liberica-javafx-18.0.2+10/bin"
 		alias ls='ls -G'
 		alias grep='grep -G'
 		alias fgrep='fgrep -G'
