@@ -26,7 +26,7 @@ set autoread                           " detect when a file is modified
 set nostartofline                      " maintain cursor position for move cmds
 set showcmd                            " show partial chords as you enter them
 set path=$PWD/**                       " path to search for :find
-match ErrorMsg '\%>80v.\+'             " highlight lines longer than 80 chrs
+match ErrorMsg '\%>80v.\+'             " highlight lines longer than 80 characters
 set notimeout                          " don't timeout waiting for a chord
 set ttimeout                           " configure a timeout for key codes
 set ttimeoutlen=0                      " do not wait after input for a chord
@@ -40,7 +40,7 @@ set directory=$HOME/.cache/vim//       " store swap files at ~/.cache/vim
 autocmd filetype * setlocal formatoptions+=j
 autocmd filetype * setlocal formatoptions-=cro
 
-" ignore certain filetypes in :find
+" ignore certain filetypes and folders in :find
 set wildignore+=**/.git/**
 set wildignore+=,*.swp
 set wildignore+=,**/__pycache__/**,**/venv/**,*.pyc
@@ -48,10 +48,13 @@ set wildignore+=,**/node_modules/**
 set wildignore+=,**/bin/**,**/dist/**,**/build/**,*.class
 set wildignore+=,*.o
 
-let mapleader=","                      " A key to map things with
-nnoremap <leader>n :noh<cr>
+" some fast and quick keybindings.  actions are on <leader> and
+" window movements are on <space>.  <leader> is comma
+let mapleader=","
+" clear search highlight
+nnoremap <leader>n :nohl<cr>
 " toggle spellchecking
-nnoremap <space>s :setlocal spell! spelllang=en_us<cr>
+nnoremap <leader>s :setlocal spell! spelllang=en_us<cr>
 " move between buffers
 nnoremap ]b :bn<cr>
 nnoremap [b :bp<cr>
@@ -69,20 +72,20 @@ nnoremap <space>d <C-d>
 
 " a little statusline I borrowed from the internet
 " https://shapeshed.com/vim-statuslines/
-" checks spaces/tabs and size
+" gets spaces/tabs setting and size
 function! Indent() abort
     let l:tabtype=(&expandtab ? "Spaces" : "Tab")
     let l:tabsize=(&expandtab ? &shiftwidth : &tabstop)
     return  l:tabtype . ':' . l:tabsize
 endfunction
 
-" checks variables to fetch file encoding
+" gets buffer encoding
 function! Encoding() abort
     return (&fileencoding ? &fileencoding : &encoding)
 endfunction
 
 set laststatus=2                       " enable the statusline
-set statusline=                        " concatenate to the statusline
+set statusline=                        " clear the statusline
 set statusline+=\                      " start padding
 set statusline+=%F                     " whole path to filename
 set statusline+=%m                     " modified
@@ -108,6 +111,7 @@ set statusline+=\                      " end padding
 " vim-commentary (https://github.com/tpope/vim-commentary):
 "   a mechanism to comment stuff out
 
-let g:sneak#label=1  " add labels when there's multiple results
+" add labels when there's multiple results
+let g:sneak#label=1
 map <leader>e :NERDTreeToggle<cr>
 map <leader>c :Commentary<cr>
