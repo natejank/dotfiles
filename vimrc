@@ -4,7 +4,7 @@
 set number                             " use line numbers
 filetype plugin indent on              " use per-filetype settings
 syntax on                              " enable syntax highlighting
-colorscheme lunaperche                 " built-in colorscheme
+colorscheme default                    " built-in colorscheme
 set tabstop=4                          " tabs display as 4 spaces
 set shiftwidth=4                       " number of spaces to use for indent
 set expandtab                          " use spaces instead of tabs
