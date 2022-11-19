@@ -66,6 +66,7 @@ alias python='python3'
 alias pip='pip3'
 alias py='python3'
 alias newsboat='newsboat -r'
+alias todo="$EDITOR $HOME/Desktop/todo.md"
 
 alias ll='ls -alF'
 alias la='ls -A'
@@ -77,7 +78,7 @@ fi
 
 # try to find the asdf version manager
 # https://asdf-vm.com/
-if [ -d "$HOME/.asdf" ]; then
+if [ -f "$HOME/.asdf/asdf.sh" ]; then
     . "$HOME/.asdf/asdf.sh"
 else
     # we install asdf using brew on macos
@@ -104,7 +105,6 @@ case `uname -s` in
 		;;
 	'Linux')
 		export GCM_CREDENTIAL_STORE='secretservice'
-		alias dnf='dnf -C'
 		alias ls='ls --color=auto'
 		;;
 esac

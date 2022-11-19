@@ -1,5 +1,5 @@
 " Nathan Jankowski's (mostly portable) vimrc
-" this is just a few inoffensive features to make vim more ergonomic
+" this is a few semi-opinionated features to make vim more ergonomic
 
 set number                             " use line numbers
 filetype plugin indent on              " use per-filetype settings
@@ -26,7 +26,6 @@ set autoread                           " detect when a file is modified
 set nostartofline                      " maintain cursor position for move cmds
 set showcmd                            " show partial chords as you enter them
 set path=$PWD/**                       " path to search for :find
-match ErrorMsg '\%>80v.\+'             " highlight lines longer than 80 characters
 set notimeout                          " don't timeout waiting for a chord
 set ttimeout                           " configure a timeout for key codes
 set ttimeoutlen=0                      " do not wait after input for a chord
@@ -39,6 +38,12 @@ set directory=$HOME/.cache/vim//       " store swap files at ~/.cache/vim
 " delete comment characters when joining lines but don't autoformat comments
 autocmd filetype * setlocal formatoptions+=j
 autocmd filetype * setlocal formatoptions-=cro
+
+" highlight lines longer than 80 characters
+autocmd filetype * match ErrorMsg '\%>80v.\+'
+" no line size limit for todo
+autocmd bufenter,bufread todo.md match none
+autocmd bufenter,bufread todo.md setlocal nowrap
 
 " ignore certain filetypes and folders in :find
 set wildignore+=**/.git/**
