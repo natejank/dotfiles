@@ -1,7 +1,7 @@
 # My zsh config file :)
 # This is an amalgomation of code from various rcfiles which came before me
 
-# If not running interactively, don't do anything
+# if we're not running interactively, don't configure the shell
 case $- in
     *i*) ;;
       *) return;;
@@ -70,17 +70,33 @@ alias newsboat='newsboat -r'
 alias ll='ls -alF'
 alias la='ls -A'
 
-if [ -f "$HOME/.cargo" ]; then
-    source $HOME/.cargo/env
+# try to find a rust installation
+if [ -d "$HOME/.cargo" ]; then
+    source "$HOME/.cargo/env"
 fi
 
-if [ -f "$(brew --prefix asdf)/asdf.sh" ]; then
-    . $(brew --prefix asdf)/asdf.sh
+# try to find the asdf version manager
+# https://asdf-vm.com/
+if [ -d "$HOME/.asdf" ]; then
+    . "$HOME/.asdf/asdf.sh"
+else
+    # we install asdf using brew on macos
+    if [ `uname -s` = 'Darwin' ]; then
+        if [ -f "$(brew --prefix asdf)/asdf.sh" ]; then
+            . $(brew --prefix asdf)/asdf.sh
+        fi
+    fi
 fi
+
+# set machine-specific environment configs
+# useful for java home etc.
+if [ -f "$HOME/.zsh_environment" ]; then
+    source "$HOME/.zsh_environment"
+fi
+
 
 case `uname -s` in
 	'Darwin')
-		export JAVA_HOME="$HOME/.asdf/installs/java/liberica-javafx-18.0.2+10/bin"
 		alias ls='ls -G'
 		alias grep='grep -G'
 		alias fgrep='fgrep -G'
