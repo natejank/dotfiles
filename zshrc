@@ -28,7 +28,7 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 zstyle ':vcs_info:git:*' formats       'on %F{green}%b %F{default}%F{yellow}%u%c%F{default} '
 zstyle ':vcs_info:git:*' actionformats 'on %F{green}%b %F{default}%F{yellow}%a%u%c%F{default} '
 setopt PROMPT_SUBST
-PROMPT='%F{red}[%F{yellow}%n%F{white}@%F{green}%m%F{red}]%f %B%F{blue}${PWD/#$HOME/~}%F{default}%b ${vcs_info_msg_0_}%% '
+PROMPT='%F{red}[%F{green}%m%F{red}]%f %B%F{blue}${PWD/#$HOME/~}%F{default}%b ${vcs_info_msg_0_}%% '
 
 
 ## Shell Configuration
