@@ -95,6 +95,11 @@ if [ -f "$HOME/.zsh_environment" ]; then
     source "$HOME/.zsh_environment"
 fi
 
+# add the ~/bin directory for funny little scripts and things
+if [ -d "$HOME/bin" ]; then
+    export PATH="$HOME/bin":$PATH
+fi
+
 
 case `uname -s` in
 	'Darwin')
