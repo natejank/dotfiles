@@ -60,6 +60,8 @@ let mapleader=","
 nnoremap <leader>n :nohl<cr>
 " toggle spellchecking
 nnoremap <leader>s :setlocal spell! spelllang=en_us<cr>
+" run command on line
+nnoremap <expr> gr ":!" . getline(".") . "<cr><cr>"
 " move between buffers
 nnoremap ]b :bn<cr>
 nnoremap [b :bp<cr>
