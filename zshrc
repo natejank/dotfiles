@@ -102,15 +102,30 @@ fi
 
 
 case `uname -s` in
-	'Darwin')
-		alias ls='ls -G'
-		alias grep='grep -G'
-		alias fgrep='fgrep -G'
-		alias egrep='egrep -G'
-		;;
-	'Linux')
-		export GCM_CREDENTIAL_STORE='secretservice'
-		alias ls='ls --color=auto'
-		;;
+    'Darwin')
+        alias ls='ls -G'
+        alias grep='grep -G'
+        alias fgrep='fgrep -G'
+        alias egrep='egrep -G'
+
+        alias copy='pbcopy'
+        alias paste='pbpaste'
+        ;;
+    'Linux')
+        export GCM_CREDENTIAL_STORE='secretservice'
+        alias ls='ls --color=auto'
+
+        case `echo $XDG_SESSION_TYPE` in
+            'x11')
+                alias copy='xclip -i -selection "clipboard"'
+                alias paste='xclip -o'
+                ;;
+            'wayland')
+                # using wl-clipboard
+                alias copy='wl-copy --foreground'
+                alias paste='wl-paste -foreground'
+                ;;
+        esac
+        ;;
 esac
 
