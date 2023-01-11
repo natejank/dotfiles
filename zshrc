@@ -66,7 +66,7 @@ alias python='python3'
 alias pip='pip3'
 alias py='python3'
 alias newsboat='newsboat -r'
-alias todo="$EDITOR $HOME/Desktop/todo.md"
+alias scratchpad="$EDITOR $HOME/Documents/scratchpad.md"
 
 alias ll='ls -alF'
 alias la='ls -A'
@@ -80,13 +80,6 @@ fi
 # https://asdf-vm.com/
 if [ -f "$HOME/.asdf/asdf.sh" ]; then
     . "$HOME/.asdf/asdf.sh"
-else
-    # we install asdf using brew on macos
-    if [ `uname -s` = 'Darwin' ]; then
-        if [ -f "$(brew --prefix asdf)/asdf.sh" ]; then
-            . $(brew --prefix asdf)/asdf.sh
-        fi
-    fi
 fi
 
 # set machine-specific environment configs
@@ -98,6 +91,7 @@ fi
 # add the ~/bin directory for funny little scripts and things
 if [ -d "$HOME/bin" ]; then
     export PATH="$HOME/bin":$PATH
+    export PYTHONPATH="$HOME/bin":$PYTHONPATH
 fi
 
 

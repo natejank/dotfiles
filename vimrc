@@ -42,8 +42,9 @@ autocmd filetype * setlocal formatoptions-=cro
 " highlight lines longer than 80 characters
 autocmd filetype * match ErrorMsg '\%>80v.\+'
 " no line size limit for todo
-autocmd bufenter,bufread todo.md match none
-autocmd bufenter,bufread todo.md setlocal nowrap
+autocmd bufenter,bufread scratchpad.md match none
+autocmd bufenter,bufread scratchpad.md setlocal nowrap
+autocmd bufenter,bufread scratchpad.md let @o='0iopen €ýa'
 
 " ignore certain filetypes and folders in :find
 set wildignore+=**/.git/**
