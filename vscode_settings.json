@@ -1,0 +1,109 @@
+{
+    "editor.fontSize": 14,
+    "terminal.external.osxExec": "iterm.app",
+    "files.trimTrailingWhitespace": true,
+    "explorer.compactFolders": false,
+
+    "editor.minimap.enabled": false,
+    "workbench.layoutControl.enabled": false,
+    "workbench.activityBar.visible": false,
+    "window.titleBarStyle": "native",
+
+    // vim bindings
+    "vim.sneak": true,
+    "vim.sneakUseIgnorecaseAndSmartcase": true,
+    "vim.useCtrlKeys": true,
+    "vim.smartcase": true,
+    "vim.incsearch": true,
+    "vim.hlsearch": true,
+    "vim.leader": ",",
+    "vim.normalModeKeyBindings": [
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<leader>", "c"],
+            "commands": ["editor.action.commentLine"]
+        },
+        {
+            "before": ["<leader>", "C"],
+            "commands": ["editor.action.blockComment"]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<leader>", "n"],
+            "commands": [":nohl"]
+        },
+        {
+            // :NERDTreeToggle
+            "before": ["<leader>", "e"],
+            "commands": ["workbench.action.toggleSidebarVisibility"]
+        },
+        {
+            // emulate vim-commentary
+            "before": ["<leader>", "c"],
+            "commands": ["editor.action.commentLine"]
+        },
+        {
+            "before": ["<leader>", "t"],
+            "commands": ["workbench.action.terminal.openNativeConsole"]
+        },
+        {
+            // emulate :find or fzf
+            "before": ["<leader>", "f"],
+            "commands": ["workbench.action.quickOpen"]
+        },
+
+        // move to next/prev buffer
+        {
+            "before": ["]", "b"],
+            "commands": [":bn"]
+        },
+        {
+            "before": ["[", "b"],
+            "commands": [":bp"]
+        },
+        {
+            "before": ["<space>", "n"],
+            "commands": [":bn"]
+        },
+        {
+            "before": ["<space>", "p"],
+            "commands": [":bp"]
+        },
+
+        // half page movements
+        {
+            "before": ["<space>", "u"],
+            "after": ["<C-u>"]
+        },
+        {
+            "before": ["<space>", "d"],
+            "after": ["<C-d>"]
+        },
+
+        // move around splits
+        {
+            "before": ["<space>", "h"],
+            "after": ["<C-w>", "h"]
+        },
+        {
+            "before": ["<space>", "j"],
+            "after": ["<C-w>", "j"]
+        },
+        {
+            "before": ["<space>", "k"],
+            "after": ["<C-w>", "k"]
+        },
+        {
+            "before": ["<space>", "l"],
+            "after": ["<C-w>", "l"]
+        },
+
+        // close window
+        {
+            "before": ["<space>", "q"],
+            "after": ["<C-w>", "q"]
+        },
+    ]
+}
