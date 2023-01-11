@@ -22,11 +22,14 @@
     "vim.visualModeKeyBindingsNonRecursive": [
         {
             "before": ["<leader>", "c"],
-            "commands": ["editor.action.commentLine"]
+            "commands": ["editor.action.commentLine"],
+            "silent": true
         },
         {
             "before": ["<leader>", "C"],
-            "commands": ["editor.action.blockComment"]
+            "commands": ["editor.action.blockComment"],
+            "silent": true
+
         }
     ],
     "vim.normalModeKeyBindingsNonRecursive": [
@@ -37,21 +40,29 @@
         {
             // :NERDTreeToggle
             "before": ["<leader>", "e"],
-            "commands": ["workbench.action.toggleSidebarVisibility"]
+            "commands": ["workbench.action.toggleSidebarVisibility"],
+            "silent": true
+
         },
         {
             // emulate vim-commentary
             "before": ["<leader>", "c"],
-            "commands": ["editor.action.commentLine"]
+            "commands": ["editor.action.commentLine"],
+            "silent": true
+
         },
         {
             "before": ["<leader>", "t"],
-            "commands": ["workbench.action.terminal.openNativeConsole"]
+            "commands": ["workbench.action.terminal.openNativeConsole"],
+            "silent": true
+
         },
         {
             // emulate :find or fzf
             "before": ["<leader>", "f"],
-            "commands": ["workbench.action.quickOpen"]
+            "commands": ["workbench.action.quickOpen"],
+            "silent": true
+
         },
 
         // move to next/prev buffer
@@ -105,5 +116,6 @@
             "before": ["<space>", "q"],
             "after": ["<C-w>", "q"]
         },
-    ]
+    ],
+    "workbench.startupEditor": "none"
 }
