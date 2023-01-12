@@ -65,6 +65,12 @@
 
         },
 
+        // show documentation (hover)
+        {
+            "before": ["K"],
+            "commands": ["editor.action.showHover"]
+        },
+
         // move to next/prev buffer
         {
             "before": ["]", "b"],
@@ -79,7 +85,7 @@
             "commands": [":bn"]
         },
         {
-            "before": ["<space>", "p"],
+            "before": ["<space>", "N"],
             "commands": [":bp"]
         },
 
@@ -117,5 +123,6 @@
             "after": ["<C-w>", "q"]
         },
     ],
-    "workbench.startupEditor": "none"
+    "workbench.startupEditor": "none",
+    "workbench.editor.enablePreview": false
 }
