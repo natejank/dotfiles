@@ -23,18 +23,23 @@ cp "$system_ncspot" "$NCSPOT_CFG" &> /dev/null
 # vscode
 VSCODE_SETTINGS='vscode_settings.json'
 VSCODE_EXTENSIONS='install_vscode_extensions.sh'
+VSCODE_INIT_VIM='vscode_init.vim'
+
 
 # find settings.json
 case `uname -s` in
     'Darwin')
         system_vscode_settings="$HOME/Library/Application Support/Code/User/settings.json"
+        system_init_vim="$HOME/.config/nvim/init.vim"
         ;;
     *)
         echo 'Unsupported os! Where is your vscode settings.json?'
+        echo 'Unsupported os! Where is your vscode init.vim?'
         ;;
 esac
 
 cp "$system_vscode_settings" "$VSCODE_SETTINGS" &> /dev/null
+cp "$system_init_vim" "$VSCODE_INIT_VIM" &> /dev/null
 
 # generate script to install vscode extensions
 # this allows for easier migration, and prevents typosquatting attacks
