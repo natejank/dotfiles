@@ -1,0 +1,9 @@
+#!/bin/bash
+# wget wrapper to set up wget for automatically downloading the content of a directory.
+# call the script with any additional options and the target directory.
+# This script also includes an automated throttle to prevent undue load on the server
+# --user=$USERNAME to specify username
+# --ask-password to enter a basic-auth password
+#
+
+wget --recursive --no-parent --execute robots=off --reject 'index.html*' --wait=2 --random-wait $@

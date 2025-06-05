@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# bashlet to get a premade gitignore for a language
+
+URL="https://raw.githubusercontent.com/github/gitignore/main/$1.gitignore" 
+curl --silent $URL

@@ -1,0 +1,16 @@
+#!/bin/bash
+# thin wrapper to use imagemagick to convert images to pdf
+# - reads EXIF data to rewrite images to be correctly oriented
+# - resizes them to <= 1080p (vertical) to save space, while still being
+# legible so long as your homework isn't across the room from you
+# - outputs as a pdf
+#
+# note: on some distributions of Linux, you may have to change your security
+# policy to allow ImageMagick/GhostScript to read and write PDFs.  This is
+# disabled by default to protect servers processing untrusted inputs,
+# but is likely fine for you.
+# see: https://askubuntu.com/questions/1181762/imagemagickconvert-im6-q16-no-images-defined
+#
+# usage: converttopdf image1 image2 image3 ... imageN
+
+convert -auto-orient -resize 1080x1920\> $@ out.pdf

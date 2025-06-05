@@ -1,0 +1,4 @@
+#!/bin/bash
+# a macro to optimize an image at 1080p
+
+convert -auto-orient -resize 1080x1920\> "$1" "optimized.jpg"

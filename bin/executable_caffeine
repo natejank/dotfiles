@@ -1,0 +1,14 @@
+#!/bin/bash
+# bashlet to inhibit sleep on *nix systems
+echo "inhibiting sleep..."
+case `uname` in
+    'Darwin')
+        caffeinate
+        ;;
+    'Linux')
+        systemd-inhibit --what=idle sleep infinity
+        ;;
+    *)
+        echo "unknown system!"
+        ;;
+esac

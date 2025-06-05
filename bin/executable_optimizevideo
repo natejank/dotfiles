@@ -1,0 +1,12 @@
+#!/bin/bash
+# wrapper to optimize video with ffmpeg
+# usage: optimizevideo [video-file]
+#
+
+if [ "$(uname -s)" = "Darwin" ]; then
+    echo "Detected macOS; using hardware accelleration with video toolbox"
+    ffmpeg -i "$1" -c:v h264_videotoolbox -q:v 75 -c:a aac optimized.mp4
+else
+    echo "No known way to use hardware accelleration; falling back to software encoding"
+    ffmpeg -i "$1" -c:v libx265 -crf 28 -preset fast -c:a aac -b:a 96k optimized.mp4
+fi

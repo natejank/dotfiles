@@ -1,0 +1,7 @@
+#!/bin/bash
+
+FILE="$HOME/Videos/$(date +'%m-%d-%Y_%T').mkv"
+
+wf-recorder --geometry="$(slurp)" --audio --file="$FILE"
+
+notify-send "$FILE"

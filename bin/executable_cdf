@@ -1,0 +1,17 @@
+#!/bin/bash
+# cd-find/cd-fast
+# usage: cdf [dir] [fd_flags]
+dir="."
+
+# use an alternate directory (if applicable)
+if [ -n "$1" ]; then
+	dir="$1"
+fi
+
+dest=$(fd --base-directory="$dir" --type=directory "$2" | fzf)
+
+# if fzf returned something (i.e. the user didn't press escape), cd there.
+if [ -n "$dest" ]; then
+	echo "$dir/$dest"
+	cd "$dir/$dest"
+fi

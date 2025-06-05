@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# TODO add option to delete original
+orig="$1"
+
+# get basename
+# TODO use pattern matching to get lower/upper case
+bn="$(basename $orig .HEIC)"
+if [ "$bn" = "$orig" ]; then
+    bn="$(basename $orig .heic)"
+fi
+
+# convert original to jpg
+convert "$orig" "$bn.jpg"

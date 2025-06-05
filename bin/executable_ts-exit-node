@@ -1,0 +1,17 @@
+#!/bin/bash
+EXIT_NODE=''
+case "$1" in
+'nyc')
+    EXIT_NODE='us-nyc-wg-301.mullvad.ts.net'
+    ;;
+'home')
+    EXIT_NODE='bebop'
+    ;;
+'off')
+    EXIT_NODE=''
+    ;;
+esac
+
+echo "Setting exit node to $EXIT_NODE"
+tailscale set --exit-node="$EXIT_NODE"
+unset EXIT_NODE

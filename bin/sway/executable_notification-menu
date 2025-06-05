@@ -1,0 +1,63 @@
+#!/usr/bin/env python3
+
+import argparse
+import json
+import subprocess
+
+
+def show_notifications(notifs):
+    for notif in notifs:
+        # print(notif)
+        app = notif["app-name"]["data"]
+        summary = notif["summary"]["data"]
+        body = notif["body"]["data"]
+        id = notif["id"]["data"]
+        actions = notif["actions"]["data"]
+        print(f"({id}) {app}: {summary}")
+        if body:
+            print(f"\t{body}")
+        if actions:
+            print("\tActions:")
+            ch = 97
+            for key in actions:
+                print(f"\t({chr(ch)}) {actions[key]}")
+                ch += 1
+
+
+def do_action(notifs, id, action):
+    action = ord(action) - 97
+    action_text = ""
+    for notif in notifs:
+        if notif["id"]["data"] == id:
+            action_text = list(notif["actions"]["data"].keys())[0]
+            print("action text", action_text)
+    r = subprocess.run(
+        ["makoctl", "invoke", "-n", str(id), action_text], capture_output=True
+    )
+    return r.stdout.decode()
+
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    subparsers = parser.add_subparsers(dest="subparser_name")
+    action = subparsers.add_parser("action")
+    action.add_argument("--id", "-i", required=True, type=int)
+    action.add_argument("--action", "-a", required=True)
+
+    return parser.parse_args()
+
+
+def main():
+    args = parse_args()
+    # dismiss notifications so they all appear in history
+    subprocess.run(["makoctl", "dismiss"])
+    r = subprocess.run(["makoctl", "history"], capture_output=True)
+    notifs = json.loads(r.stdout.decode())["data"][0]
+    if args.subparser_name == "action":
+        print(do_action(notifs, args.id, args.action))
+    else:
+        show_notifications(notifs)
+
+
+if __name__ == "__main__":
+    main()

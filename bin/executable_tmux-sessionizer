@@ -1,0 +1,36 @@
+#!/bin/bash
+if [[ $# -eq 1 ]]; then
+    selected=$1
+else
+    selected=$(fd --base-directory="$HOME" --search-path="Code" --search-path=".config" --type=directory "$2" | fzf)
+fi
+
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+selected_name=$(basename "$selected" | tr . _)
+tmux_running=$(pgrep tmux)
+
+if [[ -z $tmux_running ]]; then
+    # tmux is not running
+    # create a new session and attach to the session
+    tmux new-session -s "$selected_name" -c "$HOME/$selected"
+    exit 0
+fi
+
+# tmux is running
+if ! tmux has-session -t="$selected_name" 2> /dev/null; then
+    # a session of that name does not exist
+    # create a new session
+    tmux new-session -d -s "$selected_name" -c "$HOME/$selected"
+fi
+
+# tmux is running, the session exists
+if [[ -z $TMUX ]]; then
+    # we are not attached to tmux, attach
+    tmux attach -t "$selected_name"
+else
+    # we are attached, switch to the new window
+    tmux switch-client -t "$selected_name"
+fi
