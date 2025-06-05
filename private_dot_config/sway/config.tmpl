@@ -314,9 +314,9 @@ exec hash dbus-update-activation-environment 2>/dev/null && \
         dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
 # start geoclue agent
 exec /usr/libexec/geoclue-2.0/demos/agent
-{{- if eq .chezmoi.hostname "stolas" }}
 # bluetooth control
 exec blueman-applet
+{{- if eq .chezmoi.hostname "stolas" }}
 # wireless control
 exec nm-applet
 {{- end }}
