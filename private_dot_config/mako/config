@@ -1,0 +1,6 @@
+font=Noto Mono 10
+default-timeout=10000
+max-visible=5
+
+[mode=do-not-disturb]
+invisible=1

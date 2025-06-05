@@ -1,0 +1,12 @@
+[Unit]
+Description=File Receiver Service for Taildrop
+After=network.target tailscaled.service
+
+[Service]
+UMask=0077
+ExecStart=tailscale file get --verbose --loop "/home/natejank/Downloads"
+
+[Install]
+WantedBy=default.target
+
+

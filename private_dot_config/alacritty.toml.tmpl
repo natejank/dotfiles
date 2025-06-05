@@ -1,0 +1,17 @@
+[window]
+dynamic_title = false
+padding = { x = 2, y = 1 }
+
+[env]
+TERM="xterm-256color"
+
+[font]
+{{- if eq .chezmoi.hostname "stolas" }}
+size = 12
+{{- else if eq .chezmoi.hostname "jiji" }}
+size = 14
+{{- end }}
+normal = { family = "CommitMono Nerd Font", style="Regular" }
+bold = { family = "CommitMono Nerd Font", style="Bold" }
+italic = { family = "CommitMono Nerd Font", style="Italic" }
+bold_italic = { family = "CommitMono Nerd Font", style="Bold Italic" }
