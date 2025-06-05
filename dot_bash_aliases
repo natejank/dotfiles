@@ -2,6 +2,7 @@
 export EDITOR='nvim'
 # on linux, enable sway bin
 export PATH="$PATH":"$HOME/bin/sway"
+export SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
 
 export HISTSIZE=-1
 export HISTFILESIZE=100000
