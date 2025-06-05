@@ -15,7 +15,7 @@
 {{- if eq .chezmoi.hostname "stolas" }}
         "backlight",
         "battery",
-        "custom/ppd",
+        "power-profiles-daemon",
 {{- end }}
         "clock",
         "tray"
@@ -132,7 +132,7 @@
         "on-click": "blueman",
     },
     "power-profiles-daemon": {
-        "format": "PPD: {profile}",
+        "format": "{icon}",
         "tooltip-format": "Power profile: {profile}{icon}\nDriver: {driver}",
         "tooltip": true,
         "format-icons": {
@@ -142,11 +142,5 @@
             "power-saver": ""
         }
     },
-	// ubuntu is too old to use the actual ppd plugin :(
-	"custom/ppd": {
-        "format": "PPD: {}",
-        "exec": "powerprofilesctl get 2> /dev/null",
-		"interval": 10,
-	}
 }
 
