@@ -20,7 +20,7 @@ ensure_installed_nir() {
 	for pkg in $@; do
 		if ! dpkg-query -W -f'${Status}' "$pkg" | grep -q "install ok installed" &> /dev/null; then
 			echo "$pkg: Installing..."
-			sudo apt install --no-install-recommends -y "$pkg"
+			sudo apt install --no-install-recommends "$pkg"
 		else
 			echo "$pkg: Already Installed"
 		fi

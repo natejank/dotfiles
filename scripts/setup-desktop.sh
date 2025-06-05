@@ -16,17 +16,17 @@ ensure_installed sway-backgrounds swaylock swayidle
 ensure_installed xdg-desktop-portal-wlr xdg-desktop-portal-gtk polkitd pipewire-audio pulseaudio-utils gnome-keyring geoclue-2-demo network-manager ufw xwayland power-profiles-daemon cups
 # fonts
 ensure_installed fonts-noto
+# minimal set of desktop applications
+ensure_installed nemo alacritty imv
+ensure_installed_nir mpv
 # screen recording
 ensure_installed grimshot wf-recorder 
 # utilities required for sway
-ensure_installed wlsunset wev mako-notifier fuzzel brightnessctl wl-mirror dex playerctl libnotify-bin wl-clipboard libglib2.0-bin libsecret-tools
+ensure_installed wlsunset wev mako-notifier fuzzel brightnessctl wl-mirror dex playerctl libnotify-bin wl-clipboard libglib2.0-bin libsecret-tools adwaita-icon-theme-legacy
 # status bar
 ensure_installed waybar gir1.2-playerctl-2.0 libappindicator3-1
 # settings apps
 ensure_installed pavucontrol blueman network-manager-applet
-# minimal set of desktop applications
-ensure_installed nemo alacritty imv
-ensure_installed_nir mpv
 
 # enable the firewall
 sudo ufw enable
