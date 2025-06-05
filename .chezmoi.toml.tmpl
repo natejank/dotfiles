@@ -1,0 +1,11 @@
+{{- $email := promptStringOnce . "email" "Email address" -}}
+{{- $username := promptStringOnce . "username" "Username" -}}
+{{- $desktop := promptBoolOnce . "server" "Is desktop" -}}
+{{- $wm := promptBoolOnce . "server" "Include Window Manager config" -}}
+
+[data]
+    email = {{ $email | quote }}
+    username = {{ $username | quote }}
+    desktop = {{ $desktop }}
+    window_manager = {{ $wm }}
+
