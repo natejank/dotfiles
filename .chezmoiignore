@@ -5,6 +5,7 @@ README.md
 {{- end }}
 {{- if not .window_manager }}
 .config
+.local
 !.config/alacritty.toml
 {{- end }}
 {{- if not (eq .chezmoi.os "darwin") }}
