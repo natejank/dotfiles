@@ -319,6 +319,9 @@ exec blueman-applet
 {{- if eq .chezmoi.hostname "stolas" }}
 # wireless control
 exec nm-applet
+{{- else if eq .chezmoi.hostname "moxxie" }}
+# mount data drive
+exec gio mount -d /dev/sda1
 {{- end }}
 
 #
