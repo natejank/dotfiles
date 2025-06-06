@@ -37,3 +37,6 @@ else
 	echo "Syncthing already installed!"
 fi
 
+# required for appimages
+ensure_installed libfuse2t64
+
